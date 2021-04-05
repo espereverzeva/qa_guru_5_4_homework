@@ -1,6 +1,5 @@
 package pageobjects.scenarios;
 
-
 import org.junit.jupiter.api.Test;
 
 public class StudentRegistrationFormTests {
@@ -8,8 +7,9 @@ public class StudentRegistrationFormTests {
 
     @Test
     void successfulRegistrationTest() {
-        studentRegistrationFormPage.openPage();
-        studentRegistrationFormPage.fillPage();
-        studentRegistrationFormPage.checkData();
+        studentRegistrationFormPage
+                .openPage()
+                .fillPage()
+                .checkData();
     }
 }
