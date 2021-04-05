@@ -10,7 +10,8 @@ import static com.codeborne.selenide.Selenide.open;
 public class StudentRegistrationFormPage {
     Faker faker = new Faker();
 
-    String firstName = faker.name().firstName(),
+    String site = "https://demoqa.com/automation-practice-form",
+            firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             email = faker.internet().emailAddress(),
             gender = "Male",
@@ -28,13 +29,13 @@ public class StudentRegistrationFormPage {
             state = "Uttar Pradesh",
             city = "Agra";
 
-
-    public void openPage() {
-        open("https://demoqa.com/automation-practice-form");
+    public StudentRegistrationFormPage openPage() {
+        open(site);
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        return this;
     }
 
-    public void fillPage() {
+    public StudentRegistrationFormPage fillPage() {
         $("#firstName").val(firstName);
         $("#lastName").val(lastName);
         $("#userEmail").val(email);
@@ -55,6 +56,7 @@ public class StudentRegistrationFormPage {
         $("#city").click();
         $("#stateCity-wrapper").$(byText(city)).click();
         $("#submit").click();
+        return this;
     }
 
     public void checkData() {
@@ -64,7 +66,7 @@ public class StudentRegistrationFormPage {
                 text(email),
                 text(gender),
                 text(mobile),
-                text(dayOfBirch + " " + monthOfBirch+ "," + yearOfBirch),
+                text(dayOfBirch + " " + monthOfBirch + "," + yearOfBirch),
                 text(subject1),
                 text(hobby1 + ", " + hobby2 + "," + " " + hobby3),
                 text(picture),
